@@ -231,3 +231,27 @@ Twenty-three minutes after.
 ---
 
 *Part 2 will cover the disclosure timeline: when the bug was known, how it was classified, and why a fix can exist for weeks without reaching the people running the money. Both Blockstream and the Bitcoin Red Team have said they will publish their accounts. I would rather read those first than guess.*
+
+---
+
+**Update — 4 October 2026**
+
+Blockstream published its incident assessment on 23 September. The mechanism
+described above holds, and the report adds one thing this post did not have:
+the flaw that was exploited was not the one that had been sitting in the code
+since 2018. It was introduced by the fix to that older bug, three weeks before
+the drain.
+
+The older defect — a cache key that omitted the asset commitment and the
+script — was reported by an external researcher, stutxo, on 2 August 2026, and
+patched the following day. The patch added the missing fields, but concatenated
+them without length prefixes, which is what the attacker exploited. Blockstream
+calls the original defect a critical consensus bug, and credits its discovery
+to that researcher rather than to an automated scan.
+
+I've written up what that sequence implies about reviewing patches, alongside
+the 2017 Parity freeze, in
+[The guard that asked the wrong question](2026-10-04-the-guard.html).
+
+The disclosure history is still unresolved. The Bitcoin Red Team's own account
+has not been published. Part 2 waits for it.
